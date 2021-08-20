@@ -1,14 +1,30 @@
-import React from 'react';
+import React from "react";
+import db from "../firebase/firebase";
+import { useEffect, useState } from "react";
 
-import { Container, Nav, Navbar } from 'react-bootstrap';
+import { Container, Nav, Navbar } from "react-bootstrap";
 
-import { Link, Route, Switch, useRouteMatch } from 'react-router-dom';
+import { Link, Route, Switch, useRouteMatch } from "react-router-dom";
 
-import Home from './event-home';
-import About from './event-about';
+import Home from "./event-home";
+import About from "./event-about";
 
 function Event() {
   const { path, url } = useRouteMatch();
+
+  const [datas, setData] = useState([]);
+
+  useEffect(() => {
+    fetchBlogs();
+  });
+
+  const fetchBlogs = async () => {
+    const response = db.collection("data");
+    const data = await response.get();
+    data.docs.forEach((item) => {
+      setData([...datas, item.data()]);
+    });
+  };
 
   return (
     <>
@@ -30,12 +46,12 @@ function Event() {
 
       <Switch>
         <Route path={`${path}/about`}>
-          <About />
+          <About datas={datas} />
         </Route>
 
         {/* Home */}
         <Route path={`${path}/home`}>
-          <Home />{' '}
+          <Home datas={datas} />{" "}
         </Route>
         <Route exact path={`${path}`}>
           <Home />

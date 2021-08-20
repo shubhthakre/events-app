@@ -1,45 +1,29 @@
-import db from '../firebase/firebase';
-import { useEffect, useState } from 'react';
-
-import { Col, Container, Row, Card } from 'react-bootstrap';
-import Footer from './footer';
-function Home() {
-  const [datas, setData] = useState([]);
-  let url = '';
-
-  useEffect(() => {
-    fetchBlogs();
-  });
-
-  const fetchBlogs = async () => {
-    const response = db.collection('data');
-    const data = await response.get();
-    data.docs.forEach(item => {
-      setData([...datas, item.data()]);
-    });
-  };
-
+import { Col, Container, Row, Card } from "react-bootstrap";
+import Footer from "./footer";
+function Home(props) {
+  const datas = props.datas;
+  let url = "";
   return (
     <div className="App">
-      {datas.map(data => {
+      {datas.map((data) => {
         return (
           <div className="blog-container">
             <Container
               fluid
               style={{
-                backgroundColor: '#101825',
-                color: 'white',
+                backgroundColor: "#101825",
+                color: "white",
               }}
             >
               <Row
                 className="justify-content-center align-items-center"
                 style={{
-                  height: '300px',
+                  height: "300px",
                 }}
               >
                 <Col sm={10}>
-                  <h1 style={{ fontSize: '1.6rem' }}>{data.title}</h1>
-                  <p>{data.card}</p>
+                  <h1 style={{ fontSize: "1.6rem" }}>{data.title}</h1>
+                  <p>{data.date}</p>
                 </Col>
               </Row>
             </Container>
@@ -47,24 +31,24 @@ function Home() {
             <Container
               fluid
               style={{
-                backgroundColor: '#1b2029',
-                color: 'white',
+                backgroundColor: "#1b2029",
+                color: "white",
               }}
             >
               <Row
                 className="justify-content-center"
                 style={{
-                  padding: '80px 0px',
+                  padding: "80px 0px",
                 }}
               >
                 <Col md={8}>
-                  <h1 style={{ fontSize: '1.2rem' }}>{data.desc1}</h1>
-                  <h2 style={{ fontSize: '1rem', marginTop: '40px' }}>
+                  <h1 style={{ fontSize: "1.2rem" }}>{data.desc1}</h1>
+                  <h2 style={{ fontSize: "1rem", marginTop: "40px" }}>
                     {data.desc2}
                   </h2>
                 </Col>
                 <Col md={2}>
-                  <h1 style={{ fontSize: '1.2rem' }}>Relevant Links</h1>
+                  <h1 style={{ fontSize: "1.2rem" }}>Relevant Links</h1>
                   <a href={url}>Meeting overview</a>
                 </Col>
               </Row>
@@ -72,20 +56,20 @@ function Home() {
             <Container
               fluid
               style={{
-                color: 'white',
-                padding: '9vw',
-                backgroundColor: '#222833',
-                marginTop: '0px',
-                paddingTop: '5vw',
+                color: "white",
+                padding: "9vw",
+                backgroundColor: "#222833",
+                marginTop: "0px",
+                paddingTop: "5vw",
               }}
             >
               <h1>Co-chairs</h1>
               <Row className="justify-content-md-auto">
                 <Card
                   style={{
-                    width: '18rem',
-                    backgroundColor: '#222833',
-                    color: 'white',
+                    width: "18rem",
+                    backgroundColor: "#222833",
+                    color: "white",
                   }}
                 >
                   <Card.Img
@@ -101,9 +85,9 @@ function Home() {
                 </Card>
                 <Card
                   style={{
-                    width: '18rem',
-                    backgroundColor: '#222833',
-                    color: 'white',
+                    width: "18rem",
+                    backgroundColor: "#222833",
+                    color: "white",
                   }}
                 >
                   <Card.Img
@@ -119,9 +103,9 @@ function Home() {
                 </Card>
                 <Card
                   style={{
-                    width: '18rem',
-                    backgroundColor: '#222833',
-                    color: 'white',
+                    width: "18rem",
+                    backgroundColor: "#222833",
+                    color: "white",
                   }}
                 >
                   <Card.Img
@@ -135,9 +119,9 @@ function Home() {
                 </Card>
                 <Card
                   style={{
-                    width: '18rem',
-                    backgroundColor: '#222833',
-                    color: 'white',
+                    width: "18rem",
+                    backgroundColor: "#222833",
+                    color: "white",
                   }}
                 >
                   <Card.Img
@@ -154,10 +138,10 @@ function Home() {
                 </Card>
                 <Card
                   style={{
-                    width: '18rem',
-                    backgroundColor: '#222833',
-                    color: 'white',
-                    paddingBottom: '10px',
+                    width: "18rem",
+                    backgroundColor: "#222833",
+                    color: "white",
+                    paddingBottom: "10px",
                   }}
                 >
                   <Card.Img
@@ -173,10 +157,10 @@ function Home() {
                 </Card>
                 <Card
                   style={{
-                    width: '18rem',
-                    backgroundColor: '#222833',
-                    color: 'white',
-                    paddingBottom: '10px',
+                    width: "18rem",
+                    backgroundColor: "#222833",
+                    color: "white",
+                    paddingBottom: "10px",
                   }}
                 >
                   <Card.Img
@@ -193,10 +177,10 @@ function Home() {
                 </Card>
                 <Card
                   style={{
-                    width: '18rem',
-                    backgroundColor: '#222833',
-                    color: 'white',
-                    paddingBottom: '10px',
+                    width: "18rem",
+                    backgroundColor: "#222833",
+                    color: "white",
+                    paddingBottom: "10px",
                   }}
                 >
                   <Card.Img
@@ -212,10 +196,10 @@ function Home() {
                 </Card>
                 <Card
                   style={{
-                    width: '18rem',
-                    backgroundColor: '#222833',
-                    color: 'white',
-                    paddingBottom: '10px',
+                    width: "18rem",
+                    backgroundColor: "#222833",
+                    color: "white",
+                    paddingBottom: "10px",
                   }}
                 >
                   <Card.Img
